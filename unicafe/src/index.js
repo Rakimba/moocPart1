@@ -64,16 +64,32 @@ return(
           <Button handleClick = {handleBad} text = "bad" />
         </div>
         <h1>statistics</h1>
-        <Statistics text ="good" value ={good}  total ={total}/>
-        <Statistics text ="neutral" value ={neutral} total ={total} />
-        <Statistics text ="bad" value ={bad} total ={total} />
-        <Statistics text ="Average" value ={add/total} total ={total} />
-        <Statistics text =" Positive" value ={good/total}  total ={total} percent ="%"/>
-        
-  </div>
+ <table>
+     <tbody>
+    <tr>
+        <td><Statistics text= "good"/> </td>
+        <td><Statistics value= {good}/> </td>
+    </tr>
+    <tr>
+        <td><Statistics text= "neutral"/>  </td>
+        <td><Statistics value= {neutral}/> </td>
+    </tr>
+    <tr>
+        <td><Statistics text= "bad"/></td>
+        <td><Statistics value= {bad} /></td>
+    </tr>
+    <tr>
+        <td><Statistics text= "Average" /></td>
+        <td><Statistics value ={add/total} total ={total} /></td>
+    </tr>
+    <tr>
+        <td><Statistics text= "Positive" /></td>
+        <td><Statistics value ={good/total}  total ={total} percent ="%"/></td>
+    </tr>
+    </tbody>
+</table>
 
-
-
+</div>
 )
 
 }
