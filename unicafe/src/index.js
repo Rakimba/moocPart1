@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 
+const Button =(props)=>(
+<button onClick={props.handleClick}> {props.text} </button>
+
+)
+
 const Statistics =(props)=>{
   
     if(props.total ===0){
       return (
           <div>
-              <h1>statistics</h1>
-              <p>No feedback given</p>
+           <p>No feedback given</p>
           </div>
       )
 
@@ -17,16 +21,8 @@ const Statistics =(props)=>{
 
     return(
 
-<div>
-            <h1>statistic</h1>
-
-            <p>good {props.good}</p>
-            <p>neutral {props.neutral}</p>
-            <p> bad {props.bad}</p>
-            <p>total {props.total}</p>
-             <p> Average {props.add/props.total}</p>
-             <p>Positive {props.good/props.total} % </p>
-            
+       <div>
+<p> {props.text} {props.value} {props.percent}</p>
         </div>
 
     )
@@ -61,12 +57,19 @@ const add = Math.abs(good+neutral-bad)
 return(
   <div>
       <h1>give feedback</h1>
-      <div>
-          <button onClick = {handleGood}>good</button>
-          <button onClick = {handleNeutral}>neutral</button>
-          <button onClick = {handleBad}>bad</button>
+
+       <div>
+          <Button handleClick = {handleGood} text= "good"/>
+          <Button handleClick = {handleNeutral} text ="neutral" />
+          <Button handleClick = {handleBad} text = "bad" />
         </div>
-        <Statistics add ={add} good={good} neutral={neutral} bad ={bad} total={total} />
+        <h1>statistics</h1>
+        <Statistics text ="good" value ={good}  total ={total}/>
+        <Statistics text ="neutral" value ={neutral} total ={total} />
+        <Statistics text ="bad" value ={bad} total ={total} />
+        <Statistics text ="Average" value ={add/total} total ={total} />
+        <Statistics text =" Positive" value ={good/total}  total ={total} percent ="%"/>
+        
   </div>
 
 
