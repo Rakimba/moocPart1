@@ -1,19 +1,40 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
+
+
 const App = (props) => {
   const [selected, setSelected] = useState(0)
+  const [points,setpoint] = useState(new Array(6).fill(0))
+  
+  
 
   const handleClick=()=>{
-    setSelected(Math.floor(Math.random()*6) +1)
+    setSelected(Math.floor(Math.random()*5) +1)
 
   }
+  
+  const handleVote = ()=>{
+         const copy =  [...points]
+         copy[selected] +=1
+         setpoint(copy)
+  }
+  
+const index = points.indexOf(Math.max(...points))
 
   return (
     <div>
+     <h1>anecdote of the day</h1>
       {props.anecdotes[selected]}
-      <p></p>
+     <p> has {points[selected]} votes</p>
+
+     <div>
+      <button onClick={handleVote}>vote</button>
       <button onClick={handleClick}>next anecdotes</button>
+      </div>
+       <h1> anecdote with most votes</h1>
+       {props.anecdotes[index]}
+     <p> has {points[index]} votes</p>
       
     </div>
   )
